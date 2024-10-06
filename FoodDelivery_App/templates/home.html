@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-inline-flex p-2 gap-5 ">
+{% for pizza in pizzas %}
+<div class="card" style="width: 18rem;">
+  <img src="{{pizza.image.url}}" height='250' class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{pizza.pizza_name}} </h5>
+    <p class="card-text">Category : {{pizza.category.category_name}} | Price:  {{pizza.price}}</p>
+    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+    <a href="{% if user.is_authenticated %} {% url "add_cart" pizza.uid %} {% else %} {% url "lnm" %} {% endif %}   " class="btn btn-success">add to cart <i class="fa-solid fa-cart-shopping"></i></a>
+    {% comment %} {% endif %} {% endcomment %}
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

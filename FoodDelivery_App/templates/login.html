@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block navbar %}{% endblock %}
+
+
+{% block content %}
+<div class="col-6 mx-auto border p-3 shadow-lg mt-5">
+  <h1 class='text-center'>Login Form</h1>
+
+  
+<form class="mt-5" method='post'>
+  {% csrf_token %}
+  {% include "alert.html" %}
+    <div class="mb-3">
+      <label  class="form-label">Email address</label>
+      <input type="email" class="form-control" name="email"  required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" required>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Login</button><br><br>
+    you don't have a account <a href="{% url "rnm" %}">Register</a>
+  </form>
+</div>
+{% endblock %}
